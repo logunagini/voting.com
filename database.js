@@ -19,7 +19,7 @@ const firebaseConfig = {
   storageBucket: "votingapp-5c924.firebasestorage.app",
   messagingSenderId: "207343509772",
   appId: "1:207343509772:web:14386034c0d7f04e6fe929",
-  measurementId: "G-09TR3JD7PK", 
+  measurementId: "G-09TR3JD7PK",
 };
 
 const app = initializeApp(firebaseConfig);
@@ -32,7 +32,7 @@ export async function castVote(userId, sessionId, voterName, aadhaarNumber, vote
 
   if (voteSnap.exists()) {
     console.error("User has already voted in this session.");
-    return { success: false, message: "User has already voted in this session." };
+    return { success: false, message: "You have already voted in this session." };
   }
 
   try {

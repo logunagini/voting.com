@@ -25,14 +25,14 @@ onAuthStateChanged(auth, (user) => {
   if (user) {
     console.log("User signed in:", user);
     currentUserId = user.uid;  // ✅ Get Google UUID
-    if (window.location.pathname === "/confirm.html") {
+    if (window.location.pathname === "/vote.html") {
     }
-    else if (window.location.pathname !== "/votemyi.html") {
-      window.location.href = "votemyi.html"; // Redirect only if not already there
+    else if (window.location.pathname !== "/index.html") {
+      window.location.href = "index.html"; // Redirect only if not already there
     }
   } else {
     console.log("No user is signed in.");
-    if (window.location.pathname === "/votemyi.html") {
+    if (window.location.pathname === "/index.html") {
       window.location.href = "signin.html"; // Redirect to login page if logged out
     }
   }
@@ -77,7 +77,7 @@ document.getElementById("verify-session").addEventListener("click", async () => 
 
   localStorage.setItem("sessionId", sessionId);
   alert("Verification successful! You can proceed to vote.");
-  window.location.href = "confirm.html";
+  window.location.href = "vote.html";
 });
 
 

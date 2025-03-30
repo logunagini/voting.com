@@ -1,1 +1,0 @@
-# voting.com

@@ -33,12 +33,12 @@ const provider = new GoogleAuthProvider();
 onAuthStateChanged(auth, (user) => {
   if (user) {
     console.log("User signed in:", user);
-    if (window.location.pathname !== "/votemyi.html") {  
-      window.location.href = "votemyi.html"; // Redirect only if not already there
+    if (window.location.pathname !== "/index.html") {  
+      window.location.href = "index.html"; // Redirect only if not already there
     }
   } else {
     console.log("No user is signed in.");
-    if (window.location.pathname === "/votemyi.html") {
+    if (window.location.pathname === "/index.html") {
       window.location.href = "signin.html"; // Redirect back to login page if logged out
     }
   }
@@ -49,7 +49,7 @@ export async function handleGoogleSignIn() {
   try {
     const result = await signInWithPopup(auth, provider);
     console.log("User signed in with Google:", result.user);
-    window.location.href = "votemyi.html"; // Redirect after successful login
+    window.location.href = "index.html"; // Redirect after successful login
   } catch (error) {
     console.error("Google Sign-In Error:", error);
   }
@@ -64,7 +64,7 @@ export async function SignUpHandler(event) {
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     console.log("User signed up:", userCredential.user);
-    window.location.href = "votemyi.html"; // Redirect after signup
+    window.location.href = "index.html"; // Redirect after signup
   } catch (error) {
     if (error.code === "auth/email-already-in-use") {
       console.warn("Email already in use, trying to login...");
@@ -85,7 +85,7 @@ export async function LoginHandler(event) {
   try {
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
     console.log("User logged in:", userCredential.user);
-    window.location.href = "votemyi.html"; // Redirect after login
+    window.location.href = "index.html"; // Redirect after login
   } catch (error) {
     console.error("Login Error:", error);
     alert(`Error: ${error.message}`);

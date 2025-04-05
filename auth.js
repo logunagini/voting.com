@@ -11,11 +11,7 @@ import {
   onAuthStateChanged,
 } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyDKP3kMFIUM1B1uGKzbvbqeqXhM5iW5TdE",
   authDomain: "votingapp-5c924.firebaseapp.com",
@@ -98,3 +94,4 @@ export async function LoginHandler(event) {
 document.getElementById("google-sign-in")?.addEventListener("click", handleGoogleSignIn);
 document.getElementById("sign-up")?.addEventListener("click", SignUpHandler);
 document.getElementById("sign-in")?.addEventListener("click", LoginHandler);
+export { auth, provider, signInWithPopup, onAuthStateChanged };

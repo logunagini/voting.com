@@ -11,7 +11,11 @@ import {
   onAuthStateChanged,
 } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
 
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyDKP3kMFIUM1B1uGKzbvbqeqXhM5iW5TdE",
   authDomain: "votingapp-5c924.firebaseapp.com",
@@ -29,13 +33,19 @@ const provider = new GoogleAuthProvider();
 onAuthStateChanged(auth, (user) => {
   if (user) {
     console.log("User signed in:", user);
-    if (window.location.pathname !== "/index.html") {  
-      window.location.href = "index.html"; // Redirect only if not already there
+    // if (window.location.pathname !== "VotingApp/index.html") {  
+    //   window.location.href = "index.html"; // Redirect only if not already there
+    // }
+    if(window.location.href.includes("signin.html")) {
+      window.location.href = "index.html";
     }
   } else {
     console.log("No user is signed in.");
-    if (window.location.pathname === "/index.html") {
-      window.location.href = "signin.html"; // Redirect back to login page if logged out
+    // if (window.location.pathname === "VotingApp/index.html") {
+    //   window.location.href = "signin.html"; // Redirect back to login page if logged out
+    // }
+    if(window.location.href.includes("index.html")) {
+      window.location.href = "signin.html";
     }
   }
 });
@@ -94,4 +104,3 @@ export async function LoginHandler(event) {
 document.getElementById("google-sign-in")?.addEventListener("click", handleGoogleSignIn);
 document.getElementById("sign-up")?.addEventListener("click", SignUpHandler);
 document.getElementById("sign-in")?.addEventListener("click", LoginHandler);
-export { auth, provider, signInWithPopup, onAuthStateChanged };

@@ -1,94 +1,34 @@
-// import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
-
-// import {
-//   getFirestore,
-//   collection,
-//   addDoc,
-//   getDocs,
-//   getDoc,
-//   doc,
-//   setDoc,
-//   serverTimestamp,
-//   updateDoc,
-//   deleteDoc,
-// } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js";
-
-// const firebaseConfig = {
-//   apiKey: "AIzaSyDKP3kMFIUM1B1uGKzbvbqeqXhM5iW5TdE",
-//   authDomain: "votingapp-5c924.firebaseapp.com",
-//   projectId: "votingapp-5c924",
-//   storageBucket: "votingapp-5c924.firebasestorage.app",
-//   messagingSenderId: "207343509772",
-//   appId: "1:207343509772:web:14386034c0d7f04e6fe929",
-//   measurementId: "G-09TR3JD7PK",
-// };
-
-// const app = initializeApp(firebaseConfig);
-// const db = getFirestore(app);
-
-
-// ✅ Function to Store Vote in Firestore
-// export async function castVote(userId, sessionId, voterName, aadhaarNumber, voteChoice) {
-//   const voteRef = doc(db, `users/${userId}/votes`, sessionId);
-//   const voteSnap = await getDoc(voteRef);
-
-//   if (voteSnap.exists()) {
-//     console.error("User has already voted in this session.");
-//     return { success: false, message: "You have already voted in this session." };
-//   }
-
-//   try {
-//     await setDoc(voteRef, {
-//       vote: voteChoice,
-//       time: serverTimestamp(),
-//       voterName: voterName,
-//       aadhaarNumber: aadhaarNumber
-//     });
-//     console.log("Vote recorded successfully.");
-
-//     return { success: true, message: "Vote recorded successfully." };
-
-//   } catch (error) {
-//     console.error("Error storing vote: ", error);
-//     return { success: false, message: "Error storing vote." };
-//   }
-// }
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
 import {
   getFirestore,
+  collection,
+  addDoc,
+  getDocs,
+  getDoc,
   doc,
   setDoc,
-  getDoc
+  serverTimestamp,
+  updateDoc,
+  deleteDoc,
 } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDKP3kMFIUM1B1uGKzbvbqeqXhM5iW5TdE",
   authDomain: "votingapp-5c924.firebaseapp.com",
   projectId: "votingapp-5c924",
-  storageBucket: "votingapp-5c924.appspot.com",
+  storageBucket: "votingapp-5c924.firebasestorage.app",
   messagingSenderId: "207343509772",
-  appId: "1:207343509772:web:14386034c0d7f04e6fe929"
+  appId: "1:207343509772:web:14386034c0d7f04e6fe929",
+  measurementId: "G-09TR3JD7PK", 
 };
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-export async function castVote(userId, sessionId, name, aadhaar, choice) {
-  const voteRef = doc(db, `users/${userId}/votes`, sessionId);
-  const existing = await getDoc(voteRef);
 
-  if (existing.exists()) {
-    console.error("Already voted");
-    return false;
-  }
 
-  await setDoc(voteRef, {
-    name,
-    aadhaar,
-    choice
-  });
 
-  return true;
-}
+// ✅ Function to Store Vote in Firestore
+
 
 // ✅ Function to Get User's Votes
 export async function getUserVotes(userId) {

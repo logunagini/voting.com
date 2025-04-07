@@ -150,15 +150,20 @@
 
   <script>
     function logoutAndRedirect() {
+      // Clear any local/session storage
       localStorage.removeItem("userSession");
       sessionStorage.clear();
 
-      // Redirect to sign-in page after 5 seconds
+      // Set GitHub Pages base path — UPDATE this if your repo name is different!
+      const basePath = "/VotingApp/";
+
+      // Redirect after 5 seconds
       setTimeout(function () {
-        window.location.href = "signin.html"; // <-- Adjusted path
+        window.location.href = window.location.origin + basePath + "signin.html";
       }, 5000);
     }
 
+    // Call function on page load
     window.onload = logoutAndRedirect;
   </script>
 

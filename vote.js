@@ -78,7 +78,7 @@ onAuthStateChanged(auth, (user) => {
       if (result.success) {
         alert("Your vote has been recorded successfully!");
        
-        window.location.href = `${window.location.origin}/VotingApp/thanking.html`;
+        window.location.href = thanking.html;
 
        ;
         } else {
